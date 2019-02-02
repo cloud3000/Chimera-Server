@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <link rel="stylesheet" href="reset.css" </link>
+  <link rel="stylesheet" href="main.css" </link>
+  <script type="text/javascript" src="view3000.js"></script>
+  <title>HP2645A</title>
+
+</head>
+<body>
+<header>
+  <h5 id="descr"></h6>
+</header>
+<main>
+  <form>
+    <div id="r1" class="vrow"></div>
+    <div id="r2" class="vrow"></div>
+    <div id="r3" class="vrow"></div>
+    <div id="r4" class="vrow"></div>
+    <div id="r5" class="vrow"></div>
+    <div id="r6" class="vrow"></div>
+    <div id="r7" class="vrow"></div>
+    <div id="r8" class="vrow"></div>
+    <div id="r9" class="vrow"></div>
+    <div id="r10" class="vrow"></div>
+    <div id="r11" class="vrow"></div>
+    <div id="r12" class="vrow"></div>
+    <div id="r13" class="vrow"></div>
+    <div id="r14" class="vrow"></div>
+    <div id="r15" class="vrow"></div>
+    <div id="r16" class="vrow"></div>
+    <div id="r17" class="vrow"></div>
+    <div id="r18" class="vrow"></div>
+    <div id="r19" class="vrow"></div>
+    <div id="r20" class="vrow"></div>
+    <div id="r21" class="vrow"></div>
+    <div id="r22" class="vrow"></div>
+    <div id="r23" class="vrow"></div>
+    <div id="r24" class="vrow"></div>
+</form>
+</main>
+
+<footer class="keyfooter">
+  <div class="footsection">
+    <button class="fkey" onclick="addRowitems(24);">
+      <span id="f1a" class="fkeylabel">purchase</span>
+      <span id="f1b" class="fkeylabel">order</span>
+    </button>
+    <button class="fkey" onclick="delRowitems(24)">
+      <span id="f2a" class="fkeylabel">part</span>
+      <span id="f2b" class="fkeylabel">lookup</span>
+    </button>
+    <button class="fkey" onclick="addRowitems(1);">
+      <span id="f3a" class="fkeylabel">inv</span>
+      <span id="f3b" class="fkeylabel">master</span>
+    </button>
+    <button class="fkey" onclick="delRowitems(1)">
+      <span id="f4a" class="fkeylabel"> </span>
+      <span id="f4b" class="fkeylabel"> </span>
+    </button>
+  </div>
+  <div>
+    <p id="out"></p>
+  </div>
+  <div class="footsection">
+    <button class="fkey" onclick="initform(poitemsform)">
+      <span id="f5a" class="fkeylabel">next</span>
+      <span id="f5b" class="fkeylabel">page</span>
+    </button>
+    <button class="fkey" onclick="alertBox(6)">
+      <span id="f6a" class="fkeylabel">prev</span>
+      <span id="f6b" class="fkeylabel">page</span>
+    </button>
+    <button class="fkey" onclick="clearform()">
+      <span id="f7a" class="fkeylabel">report</span>
+      <span id="f7b" class="fkeylabel">menu</span>
+    </button>
+    <button class="fkey" onclick="initform(f)">
+      <span id="f8a" class="fkeylabel">exit</span>
+      <span id="f8b" class="fkeylabel"> </span>
+    </button>
+  </div>
+
+</footer>
+<div class="lightbox" id="alertbox">
+  <figure>
+    <a id="x" href="#" class="closemsg" onclick="closemsg()"></a>
+    <figcaption class="alertmsg">
+      <h6>Error Alert</h6>
+      <br>
+      <br>
+      <p>   Error Type: Process Management.</p>
+      <p> Error Number: 102</p>
+      <br>
+      <p><b>Description:</b></p>
+      <p>Attempt to start process <b>PSS0000.PUB.PAYROLL</b> failed, because the program file was not found!</>
+    </figcaption>
+  </figure>
+</div>
+<script type="text/javascript" src="spec3000.js"></script>
+</body>
+</html>
