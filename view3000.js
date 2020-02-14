@@ -3,65 +3,101 @@ TABIDX = 0;
 TABCNT = 0;
 TAB = false;
 
-
 alertBox = function getFocus() {
   document.getElementById("alertbox").style.display = "table";
-}
+};
 
 function addTable(tbl) {
-  var row = document.getElementById('r' + tbl.rownum);
-  row.innerHTML = row.innerHTML +
-    '';
+  var row = document.getElementById("r" + tbl.rownum);
+  row.innerHTML = row.innerHTML + "";
 }
 
 function delRowitems(rnum) {
-  var row = document.getElementById('r' + rnum);
-  row.innerHTML = '';
+  var row = document.getElementById("r" + rnum);
+  row.innerHTML = "";
 }
 
 function addFieldset(fset) {
-  var row = document.getElementById('r' + fset.rownum);
-  row.innerHTML = row.innerHTML +
-    '<fieldset class="'+ fset.class +'" ' +
-    'style="height:'+  fset.height +'vh; width:'+ fset.width +'vw; ' +
-    'position:absolute;left: ' + fset.column + 'vw;">' +
+  var row = document.getElementById("r" + fset.rownum);
+  row.innerHTML =
+    row.innerHTML +
+    '<fieldset class="' +
+    fset.class +
+    '" ' +
+    'style="height:' +
+    fset.height +
+    "vh; width:" +
+    fset.width +
+    "vw; " +
+    "position:absolute;left: " +
+    fset.column +
+    'vw;">' +
     // '<legend>&nbsp'+ fset.title +'&nbsp</legend>' +
-    '</fieldset>';
+    "</fieldset>";
 }
 
 function addSpan(static) {
-  var row = document.getElementById('r' + static.rownum);
+  var row = document.getElementById("r" + static.rownum);
   cls = mkclass(static.enh);
-  row.innerHTML = row.innerHTML +
-                  '<div class="static ' + static.align + ' ' + cls +
-                  '" style="position:absolute;left: ' +
-                  static.column + 'vw; width: ' + static.width + 'vw;"' +
-                  '><p>' + static.value + '</p></div>'
+  row.innerHTML =
+    row.innerHTML +
+    '<div class="static ' +
+    static.align +
+    " " +
+    cls +
+    '" style="position:absolute;left: ' +
+    static.column +
+    "vw; width: " +
+    static.width +
+    'vw;"' +
+    "><p>" +
+    static.value +
+    "</p></div>";
 }
 
 function addInput(field) {
-  var row = document.getElementById('r' + field.rownum);
+  var row = document.getElementById("r" + field.rownum);
   var cls = mkclass(field.enh);
   var datamax = parseInt(field.length) + 1;
-  row.innerHTML = row.innerHTML +
-             '<input id="' + 'i' + field.fieldnum.trim() + '" type="'+ field.element +'" name="' + field.name + '"' +
-             ' title="' + field.title + '"'+
-             ' onfocus="setTABIDX(this.id)" ' +
-             ' onblur="blurFunction(this.id)" ' +
-             ' onkeypress="keypressFunction(event, this.id)"' +
-             ' onkeydown="keydownFunction(event, this.id)"' +
-             ' class="' + cls + '"' +
-             ' maxlength="' + datamax + '"' +
-             ' value="' + field.value + '"' +
-             ' style="position:absolute;left: ' + field.column + 'vw;' +
-             ' width:' + field.length + 'vw;">';
+  row.innerHTML =
+    row.innerHTML +
+    '<input id="' +
+    "i" +
+    field.fieldnum.trim() +
+    '" type="' +
+    field.element +
+    '" name="' +
+    field.name +
+    '"' +
+    ' title="' +
+    field.title +
+    '"' +
+    ' onfocus="setTABIDX(this.id)" ' +
+    ' onblur="blurFunction(this.id)" ' +
+    ' onkeypress="keypressFunction(event, this.id)"' +
+    ' onkeydown="keydownFunction(event, this.id)"' +
+    ' class="' +
+    cls +
+    '"' +
+    ' maxlength="' +
+    datamax +
+    '"' +
+    ' value="' +
+    field.value +
+    '"' +
+    ' style="position:absolute;left: ' +
+    field.column +
+    "vw;" +
+    " width:" +
+    field.length +
+    'vw;">';
 }
 function setFkey(fkey) {
   id1 = "f" + fkey.keynum + "a";
   id2 = "f" + fkey.keynum + "b";
-  l1 = document.getElementById(id1)
+  l1 = document.getElementById(id1);
   l1.innerHTML = fkey.value1;
-  l2 = document.getElementById(id2)
+  l2 = document.getElementById(id2);
   l2.innerHTML = fkey.value2;
 }
 
@@ -69,60 +105,60 @@ function clearform() {
   // var head = document.getElementById('descr');
   // head.innerHTML = '';
   for (var i = 1; i < 25; i++) {
-    delRowitems(i)
+    delRowitems(i);
   }
 } // house of reps, congress: 202-225-3121
 
 function mkclass(enh) {
-  var cls = '';
-  if ( enh === "NONE") {
+  var cls = "";
+  if (enh === "NONE") {
     return enh;
   }
   var list = enh.split("");
   list.sort();
   for (var i = 0; i < list.length; i++) {
     if (list[i] === "H") {
-      cls = cls + "ehb"
+      cls = cls + "ehb";
     }
     if (list[i] === "I") {
-      cls = cls + "ein"
+      cls = cls + "ein";
     }
     if (list[i] === "U") {
-      cls = cls + "eul"
+      cls = cls + "eul";
     }
     if (list[i] === "B") {
-      cls = cls + "ebk"
+      cls = cls + "ebk";
     }
   }
   return cls;
 }
 
 function setTABIDX(x) {
-    // document.getElementById(x).style.background = "yellow";
-    for (var i = 0; i < TABTABLE.length; i++) {
-      item=TABTABLE[i]
-      if (item.id == x) {
-        TABIDX = i;
-      }
+  // document.getElementById(x).style.background = "yellow";
+  for (var i = 0; i < TABTABLE.length; i++) {
+    item = TABTABLE[i];
+    if (item.id == x) {
+      TABIDX = i;
     }
+  }
 }
 
 function blurFunction(x) {
-    var dataval = document.getElementById(x).value
+  var dataval = document.getElementById(x).value;
 }
 
 function keypressFunction(e, x) {
   var userkey = e.which || e.keyCode;
-  var i =   document.getElementById(x);
-  var o =   document.getElementById("out");
-  if ((i.value.length === i.maxLength) && (userkey != 8)) {
+  var i = document.getElementById(x);
+  var o = document.getElementById("out");
+  if (i.value.length === i.maxLength && userkey != 8) {
     nextTab();
   }
   o.innerHTML = "key=" + userkey;
 }
 
 function keydownFunction(e, x) {
-var userkey = e.which || e.keyCode;
+  var userkey = e.which || e.keyCode;
   if (userkey == 9) {
     e.preventDefault();
     nextTab();
@@ -190,7 +226,7 @@ function nextTab() {
 
 function initform(f) {
   // Initialize form.
-  clearform()
+  clearform();
   TABTABLE = [];
   // var head = document.getElementById('descr');
   // head.innerHTML = f.descr;
@@ -209,19 +245,19 @@ function initform(f) {
         id: "i" + item.fieldnum,
         row: parseInt(item.rownum),
         col: colnum
-      })
+      });
     }
     addInput(item);
   }
 
   for (var i = 0; i < f.Functionkeys.length; i++) {
-      setFkey(f.Functionkeys[i])
+    setFkey(f.Functionkeys[i]);
   }
   for (var i = 0; i < f.textFields.length; i++) {
-      addSpan(f.textFields[i]);
+    addSpan(f.textFields[i]);
   }
   for (var i = 0; i < f.fieldSets.length; i++) {
-      addFieldset(f.fieldSets[i]);
+    addFieldset(f.fieldSets[i]);
   }
 
   TABTABLE = TABTABLE.sort(function(a, b) {
@@ -234,7 +270,7 @@ function initform(f) {
 }
 
 function closemsg() {
-  document.getElementById("alertbox").style.display = "none"
+  document.getElementById("alertbox").style.display = "none";
 }
 // EXAMPLE setCaretPosition(elemId, caretPos)
 // $("a").click(function(e){
@@ -258,28 +294,44 @@ function closemsg() {
 // });
 
 function setCaretPosition(el, caretPos) {
-    // var el = document.getElementById(elemId);
+  // var el = document.getElementById(elemId);
 
-    if (el !== null) {
-
-        if (el.createTextRange) {
-            var range = el.createTextRange();
-            range.move('character', caretPos);
-            range.select();
-            return true;
-        }
-
-        else {
-            if (el.selectionStart || el.selectionStart === 0) {
-                el.focus();
-                el.setSelectionRange(caretPos, caretPos);
-                return true;
-            }
-
-            else  { // fail city, fortunately this never happens (as far as I've tested) :)
-                el.focus();
-                return false;
-            }
-        }
+  if (el !== null) {
+    if (el.createTextRange) {
+      var range = el.createTextRange();
+      range.move("character", caretPos);
+      range.select();
+      return true;
+    } else {
+      if (el.selectionStart || el.selectionStart === 0) {
+        el.focus();
+        el.setSelectionRange(caretPos, caretPos);
+        return true;
+      } else {
+        // fail city, fortunately this never happens (as far as I've tested) :)
+        el.focus();
+        return false;
+      }
     }
+  }
+}
+
+function processJson(json) {
+  j = JSON.parse(json);
+  switch (j.cmd) {
+    case "GETNEXTFORM":
+      clearform();
+      break;
+    case "INITFORM":
+      initform(j.form);
+      break;
+    default:
+      var log = document.createElement("erorlog");
+      log.innerHTML = `${j.cmd} is not a valid command string`;
+      var doScroll = log.scrollTop > log.scrollHeight - log.clientHeight - 1;
+      log.appendChild(item);
+      if (doScroll) {
+        log.scrollTop = log.scrollHeight - log.clientHeight;
+      }
+  }
 }

@@ -1,127 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Chat Example</title>
-<script type="text/javascript">
-window.onload = function () {
-    var conn;
-    var msg = document.getElementById("msg");
-    var log = document.getElementById("log");
+  <head>
+    <title>Chat Example</title>
+    <script type="text/javascript">
+      function ascii2Hex(asciiData) {
+        let hexData = new Buffer(asciiData).toString("hex");
+        return hexData;
+      }
 
-    function appendLog(item) {
-        var doScroll = log.scrollTop > log.scrollHeight - log.clientHeight - 1;
-        // log.innerHTML = log.innerHTML + item;
-        log.appendChild(item);
-        if (doScroll) {
+      function hex2Ascii(hexData) {
+        let asciiData = new Buffer(hexData, "hex").toString();
+        return asciiData;
+      }
+
+      window.onload = function() {
+        var conn;
+        var msg = document.getElementById("msg");
+        var log = document.getElementById("log");
+
+        function appendLog(item) {
+          var doScroll =
+            log.scrollTop > log.scrollHeight - log.clientHeight - 1;
+          // log.innerHTML = log.innerHTML + item;
+          log.appendChild(item);
+          if (doScroll) {
             log.scrollTop = log.scrollHeight - log.clientHeight;
+          }
         }
-    }
 
-    document.getElementById("form").onsubmit = function () {
-        if (!conn) {
+        document.getElementById("form").onsubmit = function() {
+          if (!conn) {
             return false;
-        }
-        if (!msg.value) {
+          }
+          if (!msg.value) {
             return false;
-        }
-        conn.send(msg.value);
-        msg.value = "";
-        return false;
-    };
+          }
+          conn.send(msg.value);
+          msg.value = "";
+          return false;
+        };
 
-    if (window["WebSocket"]) {
-        conn = new WebSocket("ws://" + document.location.host + "/ws");
-        conn.onclose = function (evt) {
+        if (window["WebSocket"]) {
+          conn = new WebSocket("ws://" + document.location.host + "/ws");
+          conn.onclose = function(evt) {
             var item = document.createElement("div");
             item.innerHTML = "<b>Connection closed.</b>";
             appendLog(item.innerHTML);
-        };
-        conn.onmessage = function (evt) {
+          };
+          conn.onmessage = function(evt) {
             var item = document.createElement("div");
-            var messages = evt.data.split('\n');
+            var message = evt.data;
+            var messages = message.split("\n");
             var payload = messages[0];
-            var plArray = payload.split('|');
+            var plArray = payload.split("|");
             var tx = plArray[0];
             if (tx == "stderr") {
               var tx = plArray[1];
-              item.classList.add('stderr');
+              item.classList.add("stderr");
             }
             if (tx == "stdout") {
               var tx = plArray[1];
-              item.classList.add('stdout');
+              item.classList.add("stdout");
             }
             for (var i = 0; i < messages.length; i++) {
               var payload = messages[i];
-              var plArray = payload.split('|');
+              var plArray = payload.split("|");
               var tx = plArray[1];
               item.innerHTML = item.innerHTML + tx;
             }
             appendLog(item);
-        };
-    } else {
-        var item = document.createElement("div");
-        item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
-        appendLog(item);
-    }
-};
-</script>
-<style type="text/css">
-html {
-    overflow: hidden;
-}
+          };
+        } else {
+          var item = document.createElement("div");
+          item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
+          appendLog(item);
+        }
+      };
+    </script>
+    <style type="text/css">
+      html {
+        overflow: hidden;
+      }
 
-body {
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background: gray;
-}
+      body {
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background: gray;
+      }
 
-#log {
-    background: white;
-    margin: 0;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    position: absolute;
-    top: 0.5em;
-    left: 0.5em;
-    right: 0.5em;
-    bottom: 3em;
-    overflow: auto;
-}
+      #log {
+        background: white;
+        margin: 0;
+        padding: 0.5em 0.5em 0.5em 0.5em;
+        position: absolute;
+        top: 0.5em;
+        left: 0.5em;
+        right: 0.5em;
+        bottom: 3em;
+        overflow: auto;
+        z-index: 9;
+      }
 
-.stdout {
-    background: mediumspringgreen;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-}
+      .stdout {
+        background: mediumspringgreen;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+      }
 
-.stderr{
-    background: lavenderblush;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-}
+      .stderr {
+        background: lavenderblush;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+      }
 
-#form {
-    padding: 0 0.5em 0 0.5em;
-    margin: 0;
-    position: absolute;
-    bottom: 1em;
-    left: 0px;
-    width: 100%;
-    overflow: hidden;
-}
-
-</style>
-</head>
-<body>
-<div id="log"></div>
-<form id="form">
-    <input type="submit" value="Send" />
-    <input type="text" id="msg" size="64"/>
-</form>
-</body>
+      #form {
+        padding: 0 0.5em 0 0.5em;
+        margin: 0;
+        position: absolute;
+        bottom: 1em;
+        left: 0px;
+        width: 100%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="log"></div>
+    <form id="form">
+      <input type="submit" value="Send" />
+      <input type="text" id="msg" size="64" />
+    </form>
+  </body>
 </html>

@@ -1,13 +1,13 @@
-# Binaries for programs and plugins
-
 animal
-
 # Test binary, build with `go test -c`
 *.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
-
+client
+test.html
+vforms/
 ./bin/*
 ./pkg/*
 ./src/github.*
+Datafile008791.dat
+Datafile008978.dat
+PARTTXN

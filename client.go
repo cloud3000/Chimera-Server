@@ -25,7 +25,10 @@ const (
 	pingPeriod = (pongWait * 9) / 10
 
 	// Maximum message size allowed from peer.
-	maxMessageSize = 512
+	maxMessageSize = 4096
+
+	// The service created for the client.
+	clientService = "/home/michael/bin/sho000p"
 )
 
 var (
@@ -38,7 +41,7 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 65536,
 }
 
-// Client is a middleman between the websocket connection and the hub.
+// Client maintains communication between the websocket connection and the hub.
 type Client struct {
 	hub *Hub
 
@@ -69,35 +72,29 @@ type Client struct {
 func (c *Client) readPump() {
 	defer func() {
 		c.hub.unregister <- c
-		c.conn.Close()
 	}()
 	c.conn.SetReadLimit(maxMessageSize)
 	c.conn.SetReadDeadline(time.Now().Add(pongWait))
 	c.conn.SetPongHandler(func(string) error { c.conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
-	fmt.Println("readPump: starting infinant loop")
+	//fmt.Println("readPump: starting infinant loop")
 	for {
-		fmt.Println("readPump: wait for messages from c.conn.ReadMessage()")
+		//fmt.Println("readPump: wait for messages from c.conn.ReadMessage()")
 		_, message, err := c.conn.ReadMessage()
 		if err != nil {
-			fmt.Println("readPump: websocket.IsUnexpectedCloseError")
+			//fmt.Println("readPump: websocket.IsUnexpectedCloseError")
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway) {
 				log.Printf("error: %v", err)
 			}
 			break
 		}
 		message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
-		fmt.Println("readPump: sending message to c.hub.broadcast")
-		fmt.Printf("readPump: %s\n", string(message))
-		// c.hub.broadcast <- message
+		fmt.Printf("readPump: Sending to child: [%v]\n", string(message))
 		c.stdInTochild <- message
 	}
 }
 
-// writePump pumps messages from the hub to the websocket connection.
+// writePump sends messages from the child to the client browser.
 //
-// A goroutine running writePump is started for each connection. The
-// application ensures that there is at most one writer to a connection by
-// executing all writes from this goroutine.
 func (c *Client) writePump() {
 	ticker := time.NewTicker(pingPeriod)
 	defer func() {
@@ -107,35 +104,34 @@ func (c *Client) writePump() {
 	for {
 		select {
 		case message, ok := <-c.send:
-			fmt.Printf("writePump: got message from c.send, Client: %v\n", c.hub.clients)
 			c.conn.SetWriteDeadline(time.Now().Add(writeWait))
 			if !ok {
-				// The hub closed the channel.
-				fmt.Println("writePump: The hub closed the channel.")
+				fmt.Println("writePump: Sending websocket.CloseMessage to the client browser.")
 				c.conn.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
-			fmt.Println("writePump: c.conn.NextWriter(websocket.TextMessage)")
+			//fmt.Println("writePump: c.conn.NextWriter(websocket.TextMessage)")
 			w, err := c.conn.NextWriter(websocket.TextMessage)
 			if err != nil {
+				fmt.Printf("ERROR NextWriter: %v\n", err)
 				return
 			}
-			fmt.Println("========================================================")
-			fmt.Printf("writePump: %s\n", string(message))
+			//fmt.Println("========================================================")
+			fmt.Printf("writePump: sending to client, %s\n", string(message))
 			w.Write(message)
 
-			// Add queued chat messages to the current websocket message.
-			n := len(c.send)
-			for i := 0; i < n; i++ {
-				w.Write(newline)
-				w.Write(<-c.send)
-			}
+			// Add queued messages to the current websocket message.
+			// n := len(c.send)
+			// for i := 0; i < n; i++ {
+			// 	w.Write(newline)
+			// 	w.Write(<-c.send)
+			// }
 
 			if err := w.Close(); err != nil {
 				return
 			}
 		case <-ticker.C:
-			fmt.Println("writePump: case <-ticker.C:")
+			//fmt.Println("writePump: case <-ticker.C:")
 			c.conn.SetWriteDeadline(time.Now().Add(writeWait))
 			if err := c.conn.WriteMessage(websocket.PingMessage, []byte{}); err != nil {
 				return
@@ -151,6 +147,7 @@ func clientWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 		log.Println(err)
 		return
 	}
+
 	fmt.Println("clientWs: setting up new client")
 	client := &Client{
 		hub:             hub,
@@ -167,7 +164,8 @@ func clientWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	}
 	client.hub.register <- client
 	go client.writePump()
-	go createProcess(hub, client, "./animal")
-	fmt.Println("clientWs: wait on client.readPump()")
+	go createProcess(hub, client, clientService)
+	fmt.Println("clientWs: client.readPump(), is listening for data from the client web browser")
 	client.readPump()
+	fmt.Println("clientWs: client.readPump(), stopped listening to the client web browser")
 }

@@ -3,18 +3,1111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width initial-scale=1">
-  <link rel="stylesheet" href="reset.css" </link>
-  <link rel="stylesheet" href="main.css" </link>
-  <script type="text/javascript" src="view3000.js"></script>
-  <title>HP2645A</title>
+  
+  <style>
+html, body, div, span, h1, h2, h3, h4, h5, h6, button, p, blockquote,
+pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, s,
+samp, small, strong, sub, sup, b, u, i, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, figure, figcaption, footer, header, nav, output,
+section, time, mark, audio, video, input, textarea, select {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* inherits the browser's font properties: font-size 16px */
+    font: inherit;
+    font-family: monospace, sans-serif;
+    /*  specifies the vertical alignment of an inline element */
+    vertical-align: text-bottom;
 
+    box-sizing: border-box;
+
+    /*  specifies the height of line boxes within the element. */
+    line-height: 1;
+
+    border-radius: 0;
+
+    /* no outline around anything */
+    outline: none;
+
+    /* inherit the color value of the parent */
+    color: inherit;
+}
+
+ol, ul {
+    /* no bullets in lists */
+    list-style: none;
+}
+
+a {
+    /* the color of the font for anchor tags is inherited */
+    color: inherit;
+    /* no underline */
+    text-decoration: none;
+}
+
+button {
+    /* turn the cursor into a pointing finger */
+    cursor:pointer;
+    background-color: transparent;
+}
+
+blockquote, q {
+    /* no quotes */
+    quotes: none;
+}
+
+table {
+    /* no spacing between cells*/
+    border-spacing: 0;
+    /*borders are collapsed - adjacent table cells share borders */
+    border-collapse: collapse;
+}
+
+svg.icon {
+    width: 1.9em;
+    height: 1.9em;
+    fill: currentColor;
+}
+
+h1 {
+  font-size: 3vw;
+}
+h2 {
+  font-size: 2.5vw;
+}
+h3 {
+  font-size: 2vw;
+}
+h4 {
+  font-size: 1.5vw;
+}
+h5 {
+  font-size: 1vw;
+}
+h6 {
+  font-size: 0.5vw;
+}
+
+  body {
+  color: #212916;
+  height: 99.2vh;
+  width: 99.2vw;
+  /*border: 2px solid purple;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*background-size: 100%;*/
+  background-color: transparent; ;
+  /*background-image: url('noise2_brown.png');
+  background-repeat:repeat;*/
+  background-blend-mode:hard-light;
+}
+
+aside {
+  z-index: 1;
+  border: 1px solid #36454F;
+  border-radius: 5px;
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  width: 18vw;
+  height: 85%;
+  /*background-color: rgba(0, 255, 0, 0.1);*/
+  background-color: whitesmoke;
+  /*box-shadow: 5px 5px 3px gray;*/
+}
+
+header {
+  position: absolute;
+  /*border: 2px solid red;*/
+  left: 19vw;
+  top: 0.5vh;
+  height: 5vh;
+  width: 80vw;
+  background-color: transparent;
+  /*background-image: linear-gradient(top, #48b054, #027d10);
+  background-image: -moz-linear-gradient(top, #48b054, #027d10);
+  background-image: -webkit-linear-gradient(top, #48b054, #027d10);*/
+}
+
+header h6 {
+  color: navy;
+  text-align:left;
+  text-shadow: 4px 3px 3px gray;
+}
+header h5 {
+  color: navy;
+  text-align:left;
+  text-shadow: 4px 3px 3px gray;
+}
+
+main {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  position: absolute;
+  left: 5vw;
+  top: 5vh;
+  width: 90%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid chartreuse;
+  border-radius: 5px;
+  background-color: transparent;
+  box-shadow: 5px 5px 3px gray;
+}
+
+.vrow {
+  color: #36454F;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  background-color: whitesmoke;
+  height: 3.9vh;
+  width: 92%;
+  font-size: 1.6vw;
+  margin: 0 10vh  0 10vh;
+  position:relative;
+}
+/* .vrow:nth-child(odd) {
+  background-color:whitesmoke;
+} */
+.vrow .static {
+  color: grey;
+  vertical-align:text-bottom;
+}
+
+.s-right {
+  text-align: right;
+}
+.s-left {
+  text-align:left;
+}
+.s-center {
+  text-align:center;
+  border: 2px solid red;
+}
+
+.vrow input {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: transparent;
+  color: grey;
+  height: 96%;
+  border-color: lightgrey;
+  /*border-style: groove;*/
+  border-width: 1px;
+}
+.vrow input:focus {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background-color: lightcyan;
+  color: grey;
+  height: 96%;
+  border-color: blue;
+  /*border-style: groove;*/
+  border-width: 1px;
+}
+
+.fs7 {
+  /*z-index: 1000;*/
+  color: white;
+  border: 1px midnightblue;
+  border-style:solid;
+  border-radius: 10px;
+  border-width: thick;
+  font-weight: bolder;
+  font-size: 1.6vw;
+  text-align: center;
+  box-shadow: 5px 5px 3px gray;
+  background-color: lightyellow;
+  /*background-image: url('noise2_brown.png');
+  background-repeat:repeat;*/
+
+  /*LOOKS GOOD*/
+  /*background-blend-mode: color-dodge;*/
+
+  /*COULD BE A HALFBRIGHT SOLUTION*/
+  /*background-blend-mode:difference;*/
+
+ /*EVEN BETTER HALFBRIGHT*/
+ /*background-blend-mode: exclusion;*/
+
+ /*similar to color-dodge*/
+ /*background-blend-mode:hard-light;*/
+
+ /*background-blend-mode:lighten;*/
+
+}
+
+.keyfooter {
+  /*border-top: 1px solid lime;*/
+  z-index: 1;
+  /*border-top: medium solid rgba(0, 255, 0, 0.5);*/
+  position: fixed;
+  bottom: 0;
+  left: 5vw;
+  height: 10vh;
+  width: 90.2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footsection {
+  /*border: 1px solid forestlime;*/
+  height: 80%;
+  width: 40vw;
+  padding: 0;
+  /*background-color: transparent;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:flex-start;
+}
+
+.fkey {
+  border-color: yellow;
+  border-style: outset;
+  border-radius: 1px;
+  border-width:thin;
+  height: 100%;
+  width: 10vw;
+  background: linear-gradient(0deg, rgba(0, 255, 255, 0.3), rgba(0, 255, 255, 0.3) 65%, rgba(0, 255, 255, 0.3) 15%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fkey:active {
+  border-color: yellow;
+  border-style:inset;
+  border-radius: 5px;
+  border-width:medium;
+  background: linear-gradient(0deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 65%, rgba(0, 255, 255, 0.5) 15%);
+}
+.fkeydown {
+  border-color: yellow;
+  border-style:inset;
+  border-radius: 5px;
+  border-width:medium;
+  background: linear-gradient(0deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 65%, rgba(0, 255, 255, 0.5) 15%);
+}
+
+.fkeylabel {
+  font-size: 1.5vw;
+  text-align: center;
+  text-transform: capitalize;
+  background-color: transparent;
+}
+div.lightbox {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+div.lightbox:target {
+  display: table;
+}
+
+div.lightbox figure {
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+div.lightbox figure figcaption {
+  display: block;
+  margin: auto;
+  padding: 8px;
+  background-color: #ddbbff;
+  height: 250px;
+  position: relative;
+  overflow: auto;
+  border: 1px #000000 solid;
+  border-radius: 10px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+div.lightbox figure .closemsg {
+  display: block;
+  margin: auto;
+  height: 0;
+  overflow: visible;
+  text-align: right;
+  z-index: 2;
+  cursor: default;
+}
+
+div.lightbox figure .closemsg, div.lightbox figure figcaption {
+  width: 50%;
+}
+
+.closemsg::after {
+  content: "\00D7";
+  display: inline-block;
+  position: relative;
+  right: -20px;
+  top: -10px;
+  z-index: 3;
+  color: #ffffff;
+  border: 1px pink solid;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  margin: 0;
+  background-color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closemsg::before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.85;
+}
+
+.alertmsg {
+  background: linear-gradient(0deg, white 85%, red 15%);
+}
+.alertmsg p{
+  text-align: left;
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.0vw;
+}
+.alertmsg h6{
+  text-align: left;
+  font-style: normal;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.0vw;
+  color: white;
+}
+
+/* INVERSE   */
+.vrow  .ein {
+  color: white;
+  background-color: rgba(168, 168, 238, 0.2);
+  /*border-radius: 0.5vh;*/
+}
+
+/* HALFBRIGHT  */
+.vrow  .ehb {
+  color: grey;
+  background-color: transparent;
+  /*border-radius: 0.5vh;*/
+}
+
+/*UNDERLINE*/
+.vrow  .eul {
+  border-bottom: 1px solid rgb(188 , 226, 161);
+  background-color: white;
+
+  /*border-radius: 0.5vh;*/
+}
+
+/*HALFBRIGHT INVERSE*/
+.vrow  .ehbein {
+  color: black;
+  background-color: white;
+  /* background-image-alpha-value: 0.2 ; */
+  /*border-radius: 0.5vh;*/
+  border-style:ridge;
+}
+
+/*HALFBRIGHT UNDERLINE*/
+.vrow  .ehbeul {
+  color: grey;
+  background-color: white;
+  border-bottom: 1px solid rgb(188, 216, 161);
+  /*border-radius: 0.5vh;*/
+}
+
+/*HALFBRIGHT INVERSE UNDERLINE*/
+.vrow  .ehbeineul {
+  color: black;
+  background-color: white;
+  border-bottom: 1px solid chartreuse;
+  /*border-radius: 0.5vh;*/
+}
+
+/*INVERSE UNDERLINE*/
+.vrow  .eineul {
+  color: white;
+  background-color: rgba(0, 0, 128, 1);
+  border-bottom: 1px solid white;
+  /*border-radius: 0.5vh;*/
+}
+
+@keyframes flickerAnimation {
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes flickerAnimation{
+  0%   { opacity:1; }
+  50%  { opacity:0; }
+  100% { opacity:1; }
+}
+
+.vrow  .ebk {
+    color: blue;
+    text-shadow: 2px 2px 7px white;
+}
+.ebk {
+   -webkit-animation: flickerAnimation 1s infinite;
+   -moz-animation: flickerAnimation 1s infinite;
+   -o-animation: flickerAnimation 1s infinite;
+    animation: flickerAnimation 1s infinite;
+}
+
+</style>
+<script type="text/javascript" >
+
+    /*
+    document.getElementById("msg");
+    document.getElementById("errorlog");
+    document.getElementById("form");
+    
+    */
+
+    let View3000 = {
+      name: {},
+      conn: {},
+      formElement: {},
+      msgElement: {},
+      logElement: {},
+      formObj: {},
+      dataBuffer: [],
+      tabTable: [], // An array to store input element ID's, in TAB order
+      tablIndex: 0,
+      tabCount: 0,
+      tab: false,
+      errArray: [],
+      HexToString: function (hex) {
+        //hex = hex.toString(); //force conversion
+        let str = "";
+        for (var i = 0; i < hex.length; i += 2) {
+          str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+        }
+        return str;
+      },
+
+      StringToHex: function (str) {
+        let hex = "";
+        for (var i = 0; i < str.length; i++) {
+          hex += "" + str.charCodeAt(i).toString(16);
+        }
+      return hex.toUpperCase();
+      },
+      // connect: function () {
+      //   console.log(`${View3000.name} connect fires`);
+      // },
+      appendLog: function (item, data) {
+        let doScroll = item.scrollTop > item.scrollHeight - item.clientHeight - 1;
+        // log.innerHTML = log.innerHTML + item;
+        item.appendChild(data);
+        if (doScroll) {
+          item.scrollTop = item.scrollHeight - item.clientHeight;
+        }
+      },
+      // xsubmit: function (msg) {
+      //   if (!View3000.conn) {
+      //     return false;
+      //   }
+      //   if (!View3000.msg.value) {
+      //     return false;
+      //   }
+      //   View3000.conn.send(msg.value);
+      //   View3000.msg.value = "";
+      //   return false;
+      // },
+      processBuff: function (b) {
+        
+        scrnobj = JSON.parse(b);
+        switch (scrnobj.type) {
+          case "form":
+            View3000.formObj = scrnobj;
+            // console.log(View3000.formObj);
+            break;
+          case "dataField":
+            View3000.formObj.dataFields.push(scrnobj);
+            break;
+          case "staticText":
+            View3000.formObj.staticTexts.push(scrnobj);
+            break;
+          case "fkey":
+            View3000.formObj.fKeys.push(scrnobj);
+            break;
+          case "showformend":
+            View3000.initform(View3000.formObj);
+            break;
+          case "VSHOWALERT":
+            if (View3000.errArray.length > 0) {
+            let msgString = "Error Condition\n";
+            View3000.errArray.forEach(errmsg => {
+              msgString = msgString + '\n ' + errmsg;
+              });
+            console.log(msgString);
+            View3000.alertBox(msgString);
+            View3000.errArray = [];
+          }
+          default:
+            console.log(`Type ignored [${scrnobj.type}] > ${JSON.stringify(scrnobj)}`)
+            break;
+        }
+      },
+      streamInput: function (e, buff, bufidx, inObj) {
+        let isObject = false;
+        for (let i = bufidx, strLen = e.data.length; i < strLen; i++) {
+          if (e.data.charCodeAt(i) < 32) {
+            switch (e.data.charCodeAt(i)) {
+              case 1: // Beginning of JSON Object
+                isObject = true;
+                inObj = true;
+                buff = "";
+                break;
+              case 4: // End of JSON Object
+                if ( inObj ) {
+                  View3000.processBuff(buff);
+                }
+                inObj = false;
+                buff = "";
+              default:
+                break;
+            }
+          } else {
+            buff = buff + e.data.charAt(i);
+          }
+        }
+        if (!isObject) { // Not a JSON Object, lets log it and ignore it.
+          let msgArrray = e.data.split('|');
+          if (msgArrray[0] === "stdout"){
+            console.log(`LogType=${msgArrray[0]}, LogMsg=${msgArrray[1]}`);
+          } else {
+            View3000.errArray.push(msgArrray[1]);
+          }
+        }
+      },
+      wsConnect: function () {
+        let data = {};
+        let idx = 0;
+        let inObj = false;
+        if (window["WebSocket"]) {
+          View3000.conn = new WebSocket("ws://" + document.location.host + "/ws");
+          View3000.conn.onclose = function (evt) {
+            View3000.alertBox("<b>Connection closed.</b>");
+          };
+          View3000.conn.onmessage = function (evt) {
+            View3000.streamInput(evt, data, idx, inObj);
+          };
+        } else {
+          View3000.alertBox("<b>Your browser does not support WebSockets.</b>");
+        };
+      },
+      alertBox: function (msg) {
+        document.getElementById("alertmsg").innerHTML = `<span class="msgspan">${msg}</span>`
+        document.getElementById("alertbox").style.display = "table";
+      },
+      addTable: function (tbl) {
+        var row = document.getElementById('r' + tbl.rownum);
+        row.innerHTML = row.innerHTML +
+          '';
+      },
+      delRowitems: function (rnum) {
+        var row = document.getElementById('r' + rnum);
+        row.innerHTML = '';
+      },
+      addFieldset: function (fset) {
+        var row = document.getElementById('r' + fset.rownum);
+        row.innerHTML = row.innerHTML +
+          '<fieldset class="' + fset.class + '" ' +
+          'style="height:' + fset.height + 'vh; width:' + fset.width + 'vw; ' +
+          'position:absolute;left: ' + fset.column + 'vw;">' +
+          // '<legend>&nbsp'+ fset.title +'&nbsp</legend>' +
+          '</fieldset>';
+      },
+      addSpan: function (staticText) {
+        var row = document.getElementById('r' + staticText.rownum);
+        cls = View3000.mkclass(staticText.enh);
+        row.innerHTML = row.innerHTML +
+          '<div class="staticText ' + staticText.align + ' ' + cls +
+          '" style="position:absolute;left: ' +
+          staticText.column + 'vw; width: ' + staticText.width + 'vw;"' +
+          '><p>' + staticText.value + '</p></div>'
+      },
+      addInput: function (field) {
+        var rnum = parseInt(field.rownum);
+        rnum = rnum > 24? 24:rnum;
+
+        var row = document.getElementById('r' + rnum);
+        var cls = View3000.mkclass(field.enh);
+        var datamax = parseInt(field.length) + 1;
+        row.innerHTML = row.innerHTML +
+          '<input id="' + 'i' + field.fieldnum.trim() + '" type="' + field.element + '" name="' + field.name + '"' +
+          ' title="' + field.title + '"' +
+          ' onfocus="View3000.settablIndex(this.id)" ' +
+          ' onblur="View3000.blurFunction(this.id)" ' +
+          ' onkeypress="View3000.keypressFunction(event, this.id)"' +
+          ' onkeydown="View3000.keydownFunction(event, this.id)"' +
+          ' class="' + cls + '"' +
+          ' maxlength="' + field.length + '"' +
+          ' value="' + View3000.HexToString(field.value) + '"' +
+          ' style="position:absolute;left: ' + field.column + 'vw;' +
+          ' width:' + field.length + 'vw;">';
+      },
+      setFkey: function (fkey) {
+        id1 = fkey.name.trim() + "a";
+        id2 = fkey.name.trim() + "b";
+        l1 = document.getElementById(id1)
+        l1.innerHTML = fkey.value1;
+        l2 = document.getElementById(id2)
+        l2.innerHTML = fkey.value2;
+      },
+      compareBufferStart: function (a, b) {
+        let comparison = 0;
+        anum = parseInt(a.bufstart,10);
+        bnum = parseInt(b.bufstart,10);
+        if (anum > bnum) {
+          comparison = 1;
+        } else if (anum < bnum) {
+          comparison = -1;
+        }
+        return comparison;
+      },
+      fkey: function (keynum) {
+        View3000.conn.send(`{keyPressed:${keynum},fieldCount:${View3000.formObj.fldcnt}}`);
+        View3000.formObj.dataFields.sort(View3000.compareBufferStart);
+        for (let dfidx = 0; dfidx < View3000.formObj.dataFields.length; dfidx++) {
+            const dfld = View3000.formObj.dataFields[dfidx];
+            const ele = document.getElementById(`i${dfld.fieldnum}`);
+            dfld.value = ele.value;
+            clrObj = {
+              "fieldnum" : dfld.fieldnum,
+              "bufstart" : dfld.bufstart,
+              "name" : dfld.name,
+              "value" : dfld.value,
+              "length" : dfld.length
+            };
+            console.log(JSON.stringify(clrObj));
+            FldObj = {
+              "fieldnum" : dfld.fieldnum,
+              "bufstart" : dfld.bufstart,
+              "name" : dfld.name,
+              "value" : View3000.StringToHex(dfld.value),
+              "length" : dfld.length
+            };
+            console.log(JSON.stringify(FldObj));
+
+            payLoad = JSON.stringify(FldObj);
+            View3000.conn.send(`${payLoad}`);
+        }
+      },
+      clearform: function () {
+        // var head = document.getElementById('descr');
+        // head.innerHTML = '';
+        for (var i = 1; i < 25; i++) {
+          View3000.delRowitems(i)
+        }
+      },
+      mkclass: function (enh) {
+        var cls = '';
+        if (enh === "NONE") {
+          return enh;
+        }
+        var list = enh.split("");
+        list.sort();
+        for (var i = 0; i < list.length; i++) {
+          if (list[i] === "H") {
+            cls = cls + "ehb"
+          }
+          if (list[i] === "I") {
+            cls = cls + "ein"
+          }
+          if (list[i] === "U") {
+            cls = cls + "eul"
+          }
+          if (list[i] === "B") {
+            cls = cls + "ebk"
+          }
+        }
+        return cls;
+      },
+      settablIndex: function (x) {
+        // document.getElementById(x).style.background = "yellow";
+        for (var i = 0; i < View3000.tabTable.length; i++) {
+          item = View3000.tabTable[i]
+          if (item.id == x) {
+            View3000.tablIndex = i;
+          }
+        }
+      },
+      blurFunction: function (x) {
+        var dataval = document.getElementById(x).value
+      },
+      keypressFunction: function (e, x) {
+        var userkey = e.which || e.keyCode;
+        let C = String.fromCharCode(userkey)
+        var i = document.getElementById(x);
+        var o = document.getElementById("out");
+        if ((i.value.length >= i.maxLength) && (userkey != 8)) {
+          var sound = document.getElementById("audio");
+          sound.play()
+          View3000.nextTab(C);
+        }
+        o.innerHTML = "key=" + userkey;
+      },
+      keydownFunction: function (e, x) {
+        var userkey = e.which || e.keyCode;
+        let C = String.fromCharCode(userkey)
+        if (userkey == 9) {
+          e.preventDefault();
+          View3000.nextTab(e);
+        }
+        if (userkey == 40) {
+          e.preventDefault();
+          View3000.nextRowdown();
+        }
+        if (userkey == 38) {
+          e.preventDefault();
+          View3000.nextRowup();
+        }
+        if (userkey == 13) {
+          e.preventDefault();
+          View3000.fkey(0);
+        }
+      },
+      nextRowdown: function () {
+        currentTab = View3000.tabTable[View3000.tablIndex];
+        newTab = View3000.tabTable[View3000.tablIndex];
+        for (var field = View3000.tablIndex; field < View3000.tabTable.length; field++) {
+          if (View3000.tabTable[field].row > currentTab.row) {
+            ele = document.getElementById(View3000.tabTable[field].id);
+            ele.focus();
+            newTab = View3000.tabTable[View3000.tablIndex];
+            break;
+          }
+        }
+        if (newTab.row == currentTab.row) {
+          View3000.tablIndex = 0;
+          newTab = View3000.tabTable[View3000.tablIndex];
+          ele = document.getElementById(newTab.id);
+          ele.focus();
+        }
+      },
+      nextRowup: function () {
+        currentTab = View3000.tabTable[View3000.tablIndex];
+        newTab = View3000.tabTable[View3000.tablIndex];
+        for (var field = View3000.tablIndex; field > -1; field--) {
+          if (View3000.tabTable[field].row < currentTab.row) {
+            ele = document.getElementById(View3000.tabTable[field].id);
+            ele.focus();
+            newTab = View3000.tabTable[View3000.tablIndex];
+            break;
+          }
+        }
+        if (newTab.row == currentTab.row) {
+          View3000.tablIndex = View3000.tabTable.length - 1;
+          newTab = View3000.tabTable[View3000.tablIndex];
+          ele = document.getElementById(newTab.id);
+          ele.focus();
+        }
+      },
+      nextTab: function (c) {
+        View3000.tablIndex++;
+        if (View3000.tablIndex >= View3000.tabCount) {
+          View3000.tablIndex = 0;
+        }
+        id = View3000.tabTable[View3000.tablIndex].id;
+        ele = document.getElementById(id);
+        if ( typeof c === "string") {
+          ele.value = c;
+        }
+        ele.focus();
+        //ele.select();
+        // var len = ele.val().length;
+        // ele.val(ele.val());
+        // var status = setCaretPosition(ele, len);
+      },
+      initform: function (f) {
+        console.log(f);
+        View3000.clearform()
+        View3000.tabTable = [];
+        // var head = document.getElementById('descr');
+        // head.innerHTML = f.descr;
+        lastRow = 0;
+        colnum = 0;
+        View3000.tabTable = [];
+
+        for (var i = 0; i < f.dataFields.length; i++) {
+          let item = f.dataFields[i];
+          if (item.rownum != lastRow) {
+            lastRow = item.rownum;
+            colnum = 0;
+          }
+          colnum++;
+          
+          if (item.fieldtype != "D") {
+            View3000.tabTable.push({
+              tab: parseInt(item.scrnord),
+              id: "i" + item.fieldnum,
+              row: parseInt(item.rownum),
+              col: colnum
+            })
+          }
+          View3000.addInput(item);
+        }
+
+        for (var i = 0; i < f.fKeys.length; i++) {
+          View3000.setFkey(f.fKeys[i])
+        }
+        for (var i = 0; i < f.staticTexts.length; i++) {
+          View3000.addSpan(f.staticTexts[i]);
+        }
+        for (var i = 0; i < f.fieldSets.length; i++) {
+          View3000.addFieldset(f.fieldSets[i]);
+        }
+        View3000.tabTable = View3000.tabTable.sort(function (a, b) {
+          return parseInt(a.tab) - parseInt(b.tab);
+        });
+        View3000.tablIndex = 0;
+        View3000.tabCount = View3000.tabTable.length;
+        //console.log(`tabTable > ${JSON.stringify(View3000.tabTable)}`);
+        if (View3000.tabCount > 0) {
+          id = View3000.tabTable[View3000.tablIndex].id;
+          document.getElementById(id).focus();
+        }
+      },
+      closemsg: function () {
+        document.getElementById("alertbox").style.display = "none"
+      },
+      // setCaretPosition: function (el, caretPos) {
+
+      //   if (el !== null) {
+
+      //     if (el.createTextRange) {
+      //       var range = el.createTextRange();
+      //       range.move('character', caretPos);
+      //       range.select();
+      //       return true;
+      //     }
+
+      //     else {
+      //       if (el.selectionStart || el.selectionStart === 0) {
+      //         el.focus();
+      //         el.setSelectionRange(caretPos, caretPos);
+      //         return true;
+      //       }
+
+      //       else { // this shouldn't happen
+      //         el.focus();
+      //         return false;
+      //       }
+      //     }
+      //   }
+      // }
+    }
+
+
+    window.onload = function (e) {
+      // let rowids = [];
+      // for (let rowidx = 0; rowidx < 24; rowidx++) {
+      //   const rowid = document.getElementById(`r${rowidx+1}`);
+      //   rowids.push(rowid)
+      // }
+
+      View3000.wsConnect();
+      if(document.addEventListener){
+        document.addEventListener("keydown",keyCapt,false);
+      }
+      
+      // if(window.addEventListener){
+      //   window.addEventListener("resize",setDatascale,false);
+      // }
+
+      // function setScale(ele, s) {
+      //   for (let rowidx = 0; rowidx < rowids.length; rowidx++) {
+      //    const rowid = rowids[rowidx];
+      //     height = rowid.clientHeight;
+      //     scale = height / 14;
+      //     console.log(`Setting scale: Height: ${height}  scale: ${scale}`);
+      //     rowid.style.transform = `scale(1,${scale})`;
+
+      //   };
+      // };
+        // function buildBuffer() {
+        //   View3000.dataBuffer = [];
+        //   View3000.formObj.dataFields.sort(View3000.compareBufferStart);
+
+        //   for (let dfidx = 0; dfidx < View3000.formObj.dataFields.length; dfidx++) {
+        //     const dfld = View3000.formObj.dataFields[dfidx];
+        //     const ele = document.getElementById(`i${dfld.fieldnum}`);
+        //     dfld.value = ele.value;
+        //     FldObj = {
+        //       "fieldnum" : dfld.fieldnum,
+        //       "bufstart" : dfld.bufstart,
+        //       "name" : dfld.name,
+        //       "value" : dfld.value,
+        //       "length" : dfld.length
+        //     }
+        //     View3000.dataBuffer.push(FldObj);
+        //   }
+        // }
+
+      function keyCapt(e){
+        //well you need keep on mind that your browser use some keys 
+        //to call some function, so we'll prevent this
+        if ((e.keyCode >= 112 && e.keyCode <= 119 ) || (e.which >= 112 && e.which <= 119 )) {
+          e.preventDefault();
+          // buildBuffer();
+        };
+      
+        //now we caught the key code, yabadabadoo!!
+        var keyCode = e.keyCode || e.which;
+      
+        //your keyCode contains the key code, F1 to F12 
+        //is among 112 and 123. Just it.
+        var charStr = String.fromCharCode(keyCode);
+        let elem;     
+        switch (keyCode) {
+          case 112:
+            elem = document.getElementById("f1");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          case 113:
+            elem = document.getElementById("f2");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          case 114:
+            elem = document.getElementById("f3");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          case 115:
+            elem = document.getElementById("f4");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          case 116:
+            elem = document.getElementById("f5");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          case 117:
+            elem = document.getElementById("f6");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          case 118:
+            elem = document.getElementById("f7");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          case 119:
+            elem = document.getElementById("f8");
+            elem.classList.toggle("fkeydown");
+            if (typeof elem.onclick == "function") {
+              elem.onclick.apply(elem);
+            }
+            setTimeout(() => {
+              elem.classList.toggle("fkeydown");
+            }, 50);
+            break;
+          
+          default:
+            break;
+          
+        } 
+      };
+    }
+</script>
+<title>HP2645A</title>
+<audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autoplay="false" ></audio>
 </head>
 <body>
 <header>
   <h5 id="descr"></h6>
 </header>
 <main>
-  <form>
+  <form id="vform">
     <div id="r1" class="vrow"></div>
     <div id="r2" class="vrow"></div>
     <div id="r3" class="vrow"></div>
@@ -44,61 +1137,56 @@
 
 <footer class="keyfooter">
   <div class="footsection">
-    <button class="fkey" onclick="addRowitems(24);">
-      <span id="f1a" class="fkeylabel">purchase</span>
-      <span id="f1b" class="fkeylabel">order</span>
+    <button id="f1" class="fkey " onclick="View3000.fkey(1);">
+      <span id="FKEY1a" class="fkeylabel">F1</span>
+      <span id="FKEY1b" class="fkeylabel"></span>
     </button>
-    <button class="fkey" onclick="delRowitems(24)">
-      <span id="f2a" class="fkeylabel">part</span>
-      <span id="f2b" class="fkeylabel">lookup</span>
+    <button id="f2" class="fkey " onclick="View3000.fkey(2);">
+      <span id="FKEY2a" class="fkeylabel">F2</span>
+      <span id="FKEY2b" class="fkeylabel"></span>
     </button>
-    <button class="fkey" onclick="addRowitems(1);">
-      <span id="f3a" class="fkeylabel">inv</span>
-      <span id="f3b" class="fkeylabel">master</span>
+    <button id="f3" class="fkey " onclick="View3000.fkey(3);">
+      <span id="FKEY3a" class="fkeylabel">F3</span>
+      <span id="FKEY3b" class="fkeylabel"></span>
     </button>
-    <button class="fkey" onclick="delRowitems(1)">
-      <span id="f4a" class="fkeylabel"> </span>
-      <span id="f4b" class="fkeylabel"> </span>
+    <button id="f4" class="fkey " onclick="View3000.fkey(4);">
+      <span id="FKEY4a" class="fkeylabel">F4</span>
+      <span id="FKEY4b" class="fkeylabel"></span>
     </button>
   </div>
   <div>
     <p id="out"></p>
   </div>
   <div class="footsection">
-    <button class="fkey" onclick="initform(poitemsform)">
-      <span id="f5a" class="fkeylabel">next</span>
-      <span id="f5b" class="fkeylabel">page</span>
+    <button id="f5" class="fkey " onclick="View3000.fkey(5);">
+      <span id="FKEY5a" class="fkeylabel">F5</span>
+      <span id="FKEY5b" class="fkeylabel"></span>
     </button>
-    <button class="fkey" onclick="alertBox(6)">
-      <span id="f6a" class="fkeylabel">prev</span>
-      <span id="f6b" class="fkeylabel">page</span>
+    <button id="f6" class="fkey " onclick="View3000.fkey(6);">
+      <span id="FKEY6a" class="fkeylabel">Message</span>
+      <span id="FKEY6b" class="fkeylabel">Alert</span>
     </button>
-    <button class="fkey" onclick="clearform()">
-      <span id="f7a" class="fkeylabel">report</span>
-      <span id="f7b" class="fkeylabel">menu</span>
+    <button id="f7" class="fkey " onclick="View3000.fkey(7);">
+      <span id="FKEY7a" class="fkeylabel">F7</span>
+      <span id="FKEY7b" class="fkeylabel"></span>
     </button>
-    <button class="fkey" onclick="initform(f)">
-      <span id="f8a" class="fkeylabel">exit</span>
-      <span id="f8b" class="fkeylabel"> </span>
+    <button id="f8" class="fkey " onclick="View3000.fkey(8);">
+      <span id="FKEY8a" class="fkeylabel">F8</span>
+      <span id="FKEY8b" class="fkeylabel"> </span>
     </button>
   </div>
 
 </footer>
 <div class="lightbox" id="alertbox">
   <figure>
-    <a id="x" href="#" class="closemsg" onclick="closemsg()"></a>
+    <a id="x" href="#" class="closemsg" onclick="View3000.closemsg()"></a>
     <figcaption class="alertmsg">
       <h6>Error Alert</h6>
       <br>
       <br>
-      <p>   Error Type: Process Management.</p>
-      <p> Error Number: 102</p>
-      <br>
-      <p><b>Description:</b></p>
-      <p>Attempt to start process <b>PSS0000.PUB.PAYROLL</b> failed, because the program file was not found!</>
+      <p id="alertmsg"></p>
     </figcaption>
   </figure>
 </div>
-<script type="text/javascript" src="spec3000.js"></script>
 </body>
 </html>

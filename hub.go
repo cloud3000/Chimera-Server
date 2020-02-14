@@ -40,12 +40,12 @@ func (h *Hub) run() {
 		case client := <-h.unregister:
 			fmt.Printf("hub.run: ********* END CLIENT:\n")
 			if _, ok := h.clients[client]; ok {
-				// client.stdInTochild <- []byte("exit")
-				delete(h.clients, client)
+				client.stdInTochild <- []byte("exit")
 				close(client.send)
 				close(client.stdErrFromchild)
 				close(client.stdInTochild)
 				close(client.stdOutFromchild)
+				delete(h.clients, client)
 			}
 		}
 	}
