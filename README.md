@@ -51,14 +51,16 @@ WebSocket <<- ->>|o  I/O     o|<<-----<< stderr
   1. A new **application process** is created for each new **client connection**.
   2. I/O between the **client** and the **application process** is managed by the **Chimirror-Server** using standard I/O (*stdin, stdout, and stderr*) and the client WebSocket.
   3. Each client and application process relationship is defined as a **session**. If either the client or the application process exit, then the session is terminated by the Chimirror-Server.
-  4. **NO BINARY DATA.** Data transmitted between the client and the application process must be in **Stringify.JSON()** format. Data coming from the application process (stdout or stderr) will be formatted into a JSON string by the Chimirror-Server.   Example:
+  4. **NO BINARY DATA.** Data transmitted between the client and the application process must be in **JSON. stringify()** format. Data coming from the application process (stdout or stderr) will be formatted into a JSON string by the **Chimirror-Server**.   
+
+Her is an example of data coming from the application process:
    ~~~javascript
     {"type" : "stdout", "payload": "base64 encoded data"}
    ~~~
 
-  5. The number of sessions supported by the **Chimirror-Server** is configurable, but limited to the hardware resources available. A small laptop should be able to support hundreds of sessions, whereas a large server might support hundreds of thousands.
+  >The number of sessions supported by the **Chimirror-Server** is configurable, but limited to the hardware resources available. A small laptop should be able to support hundreds of sessions, whereas a large server might support hundreds of thousands.
 
-Communication designed to be whatever is agreed upon by the web client and the application process. For example you can agree to use **JSON** data structures where both client and server contain the algorithms to support the data structures and their purpose.
+>Communication designed to be whatever is agreed upon by the web client and the application process. For example you can agree to use **JSON** data structures where both client and server contain the algorithms to support the data structures and their purpose.
 
 >It should be noted that each web client can be connected to only one applications process. The application process itself is not limited in anyway, it can create and manage it's own process tree. 
 
