@@ -1,16 +1,13 @@
-
-# AWP-Server
-### What is it?
 <div style="display:flex; border-width:20px;border-color:red;">
   <div style="width:%;background-color:black; border-radius : 49%;">
     <img  src="http://www.cloud3000.com/img/chimera_sm.png" alt="Chimera logo" style="width : 100%;">
   </div>
-  <div>
-    <p style="color:grey;font-size:16px;padding:10px">
-      The Chimera according to Greek mythology, was a hybrid creature of Asia Minor, composed of the parts of more than one animal.
-    </P>
-  </div>
 </div>
+
+# AWP-Server
+ The Chimera according to Greek mythology, was a hybrid creature of Asia Minor, composed of the parts of more than one animal.
+### What is it?
+
 
 - The concept for the AWP-Server is based on three multi-generational computing paradigm's:
   - The Main-Frame
