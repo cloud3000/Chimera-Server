@@ -3,37 +3,35 @@
 ### What is it?
 <div style="display:flex; border-width:20px;border-color:red;">
   <div style="width:%;background-color:black; border-radius : 49%;">
-    <img  src="http://www.cloud3000.com/img/chimera.png" alt="Chimera logo" style="width : 100%;">
+    <img  src="http://www.cloud3000.com/img/chimera_sm.png" alt="Chimera logo" style="width : 100%;">
   </div>
   <div>
     <p style="color:grey;font-size:16px;padding:10px">
-      The Chimera according to Greek mythology, was a hybrid creature of Lycia in Asia Minor, composed of the parts of more than one animal.
+      The Chimera according to Greek mythology, was a hybrid creature of Asia Minor, composed of the parts of more than one animal.
     </P>
   </div>
 </div>
 
-
-  
 - The concept for the AWP-Server is based on three multi-generational computing paradigm's:
   - The Main-Frame
   - The Unix Philosophy
   - The IoT (Internet of Things)
 - It's basically a multiplexer for Advanced Web Processing.
   
-To make use of, or to criticize, you must know what a Main-Frame is, you must understand the Unix Philosophy, and the Internet of Things. Knowing the history is critical for understanding, if you're at a loss then try Duck.com
+To make use of, or to criticize, you must know what a Main-Frame is, you must understand the Unix Philosophy, and the Internet of Things. Knowing the history is critical for understanding, if you're at a loss then try [Duck.com](https://www.Duck.com "The DuckDuckGo Search engine")
 
 ---
 ### How does it work?
-- One AWP server supports multiple web-clients and multiple processes.
-  - A new process is created for each new web client connection.
-  + A web client is connected to the new process on the server using a client web socket and process's standard I/O (stdin, stdout, and stderr).
-  + Communication designed to be whatever is agreed upon by the web client and the server process. For example JSON data structures where both client and server contain the algorithms to support the data structures.
-- Each web client and server process relationship is defined as a **session**.
+- One AWP server supports multiple web-clients and multiple applications processes.
+  - A new application process is created for each new web client connection.
+  + A web client is connected to the new application process on the server using a client web socket and the process's standard I/O (stdin, stdout, and stderr).
+  + Communication designed to be whatever is agreed upon by the web client and the application process. For example you can agree to use JSON data structures where both client and server contain the algorithms to support the data structures and their purpose.
+- Each web client and application process relationship is defined as a **session**.
 - The number of sessions supported by 1 AWP-Server is limited to the hardware resources available. A small laptop should be able to support hundreds of sessions, whereas a large server might support hundreds of thousands.
 
 ---
 ### Where can it be used?
-- Single User applications for desktops, laptops, or tablets.
+- Single User applications (using any programming language) for desktops, laptops, or tablets.
 - Small business in-house servers.
 - Large Cloud Server environments.
 - The server is currently built for a unix environment.
