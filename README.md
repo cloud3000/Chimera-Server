@@ -1,14 +1,27 @@
 
 # AWP-Server
 ### What is it?
-<img  src="http://www.cloud3000.com/img/chimera.png" alt="Chimera logo">
+<div style="display:flex; border-width:20px;border-color:red;">
+  <div style="width:%;background-color:black; border-radius : 49%;">
+    <img  src="http://www.cloud3000.com/img/chimera.png" alt="Chimera logo" style="width : 100%;">
+  </div>
+  <div>
+    <p style="color:grey;font-size:16px;padding:10px">
+      The Chimera according to Greek mythology, was a hybrid creature of Lycia in Asia Minor, composed of the parts of more than one animal.
+    </P>
+  </div>
+</div>
 
-- A multiplexer for Advanced Web Processing.
-- I call it a Chimera, a mythical beast with the DNA of three or more other beasts.
-- In the AWP-Server we have three multi-generational computing paradigm's:
-  - Main-Frame
+
+  
+- The concept for the AWP-Server is based on three multi-generational computing paradigm's:
+  - The Main-Frame
   - The Unix Philosophy
-  - IoT (Internet of Things)
+  - The IoT (Internet of Things)
+- It's basically a multiplexer for Advanced Web Processing.
+  
+To make use of, or to criticize, you must know what a Main-Frame is, you must understand the Unix Philosophy, and the Internet of Things. Knowing the history is critical for understanding, if you're at a loss then try Duck.com
+
 ---
 ### How does it work?
 - One AWP server supports multiple web-clients and multiple processes.
