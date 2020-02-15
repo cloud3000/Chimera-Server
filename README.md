@@ -18,7 +18,8 @@ Start with [Charles Babbage](https://www.youtube.com/watch?v=_mldLwKvT-M "Charle
 
 ---
 ### **How does it work?**
-- One **Chimera-Server** supports multiple web-clients and multiple applications processes.
+- One **Chimera-Server** supports multiple web-clients and multiple applications processes. It is based on mathematical theories of concurrency known as process algebras, or process calculi, based on message passing via channels. 
+- 
   - A new application process is created for each new web client connection.
   + A web client is connected to the new application process on the server using a client web socket and the process's standard I/O (*stdin, stdout, and stderr*).
   + Communication designed to be whatever is agreed upon by the web client and the application process. For example you can agree to use **JSON** data structures where both client and server contain the algorithms to support the data structures and their purpose.
