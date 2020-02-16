@@ -2,15 +2,15 @@
 
 
 # Chimirror-Server
- **Chimirror** is a technical term for **Chimera**. The *Chimera* according to Greek mythology, was a hybrid beast of Asia Minor, composed of the parts of more than one animal.
+ **Chimirror** is a technical term for **Chimera**. The *Chimera* according to Greek mythology, was a hybrid beast of Asia Minor, with the genetic DNA of more than one animal.
 
-Technically the **Chimirror-Server** is a hybrid technology, composed of the parts of more than one multi-generational computing paradigm:
+Technically the **Chimirror-Server** is a hybrid technology, composed using more than one multi-generational computing paradigm:
   
   - The Main-Frame
   - The Unix Philosophy
   - The IoT (Internet of Things)
 
-From a simple perspective it's just a multiplexer for Advanced Web Processing. However, it's much more, it's a philosophy based on mathematical theories of concurrency known as process algebras, or process calculi, based on message passing via channels. Using one bidirectional web socket, and three application process channels (stdout, stdin, and stderr).
+From a simple perspective it's just a multiplexer for Advanced Interprocess Communications. However, it's much more, it's a philosophy based on mathematical theories of concurrency known as process algebras, or process calculi, based on message passing via channels. Using one bidirectional web socket, and three application process channels (stdout, stdin, and stderr).
 
 ~~~
                  | Chimirror |
