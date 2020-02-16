@@ -50,7 +50,7 @@ WebSocket <<- ->>|o  I/O     o|<<-----<< stderr
 
   1. A new **application process** is created for each new **client connection**.
   2. I/O between the **client** and the **application process** is managed by the **Chimirror-Server** using standard I/O (*stdin, stdout, and stderr*) and the client WebSocket.
-  3. Each client and application process relationship is defined as a **session**. If either the client or the application process exit, then the session is terminated by the Chimirror-Server.
+  3. Each client and application process relationship is defined as a **session**. If either the client or the application process exit, then the session is torn-down by the Chimirror-Server.
   4. **NO BINARY DATA.** Data transmitted between the client and the application process must be in **JSON. stringify()** format. Data coming from the application process (stdout or stderr) will be formatted into a JSON string by the **Chimirror-Server**.   
 
 Her is an example of data coming from the application process:
