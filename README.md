@@ -66,7 +66,7 @@ Her is an example of data coming from the application process:
 
 ---
 ### Where can it be used?
->It's important to note that the application process can be written in any programming language that supports standard I/O. This is difference than most application frameworks, like nodejs, express, and socket.io all require your application to be written in JavaScript, and likewise Flask requires Python, and so on. With **Chimirror-Server** you can use any language, at any scale. 
+>It's important to note that the application process can be written in any programming language that supports standard I/O. This is different than most application frameworks, like nodejs, express, and socket.io all require your application to be written in JavaScript, and likewise Flask requires Python, and so on. With **Chimirror-Server** you can use any language, at any scale. 
 - Single User applications (using any programming language) for desktops, laptops, or tablets.
 - Small business in-house servers.
 - Large Cloud Server environments.
