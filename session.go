@@ -147,6 +147,11 @@ func createProcess(hub *Hub, c *Client, command string) error {
 	}
 
 	defer func() {
+		if r := recover(); r != nil {
+			err := fmt.Errorf("%v", r)
+			errMsg := fmt.Sprintf("createProcess: %s : %v\n", command, err)
+			clientWrite(c.send, []byte(fmt.Sprintf("stderr| %s", string(errMsg))))
+		}
 		in.Close()
 		stdout.Close()
 		stderr.Close()
