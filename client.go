@@ -28,7 +28,7 @@ const (
 	maxMessageSize = 4096
 
 	// The service created for the client.
-	clientService = "/home/michael/bin/sho000p"
+	clientService = "/myhome/michael/Chimirror-Server/animal"
 )
 
 var (
@@ -162,6 +162,7 @@ func clientWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 		socketaddr:      string(r.RemoteAddr),
 		socketproto:     string(r.Proto),
 	}
+
 	client.hub.register <- client
 	go client.writePump()
 	go createProcess(hub, client, clientService)
